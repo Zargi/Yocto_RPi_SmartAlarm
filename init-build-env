@@ -7,7 +7,7 @@ BUILDROOT=$CWD/build
 
 MACHINE=raspberrypi
 DISTRO=smart-distro
-#Y_VERSION=sumo
+Y_VERSION=morty
 RELEASE=develop
 IMAGE=qt5-smart-image
 SDKMACHINE='i686'
