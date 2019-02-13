@@ -6,3 +6,4 @@ install:
 
 script:
  - . ./init-build-env
+ - bitbake qt5-smart-image
