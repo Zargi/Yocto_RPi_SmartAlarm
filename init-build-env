@@ -1,0 +1,47 @@
+#!/bin/sh
+CWD=`pwd`
+PROGNAME="init-build-env"
+OEROOT=$PWD/source/poky
+SOURCE_PATH="$PWD/source/meta-smart-alarm/conf"
+BUILDROOT=$CWD/build
+
+MACHINE=raspberrypi
+DISTRO=smart-distro
+#Y_VERSION=sumo
+RELEASE=develop
+IMAGE=qt5-smart-image
+SDKMACHINE='i686'
+
+# source the environment
+if [ -z "$ZSH_NAME" ] && [ "x$0" = "x./init-build-env" ]
+then
+  echo "Error: This script needs to be sourced. Please run as '. ./init-build-env [native]'"
+else
+  TEMPLATECONF=$SOURCE_PATH . $OEROOT/oe-init-build-env $BUILDROOT > /dev/null
+fi
+
+# if conf/local.conf not generated, no need to go further
+if [ ! -e conf/local.conf ]; then
+    return 1
+fi
+
+# Clean up PATH, because if it includes tokens to current directories somehow,
+# wrong binaries can be used instead of the expected ones during task execution
+export PATH="`echo $PATH | sed 's/\(:.\|:\)*:/:/g;s/^.\?://;s/:.\?$//'`"
+
+cat <<EOF
+Your build environment has been configured with:
+
+    MACHINE=$MACHINE
+    SDKMACHINE=$SDKMACHINE
+    DISTRO=$DISTRO
+
+Development Builds:
+
+    bitbake qt5-smart-image
+    
+Build commands for production images:
+
+    (none yet)
+EOF
+

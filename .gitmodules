@@ -1,0 +1,15 @@
+[submodule "source/meta-smart-alarm"]
+	path = source/meta-smart-alarm
+	url = https://github.com/Zargi/meta-smart-alarm.git
+[submodule "source/poky"]
+	path = source/poky
+	url = git://git.yoctoproject.org/poky
+[submodule "source/meta-openembedded"]
+	path = source/meta-openembedded
+	url = git://git.openembedded.org/meta-openembedded
+[submodule "source/meta-raspberrypi"]
+	path = source/meta-raspberrypi
+	url = git://git.yoctoproject.org/meta-raspberrypi
+[submodule "source/meta-qt5"]
+	path = source/meta-qt5
+	url = https://github.com/meta-qt5/meta-qt5.git
