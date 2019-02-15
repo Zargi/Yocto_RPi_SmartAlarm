@@ -1,17 +1,24 @@
-language: python
-python: "2.7"
-
-sudo: required
-dist: trusty
-
-cache: pip
-
-install:
- - sudo apt-get build-dep qemu
- - sudo apt-get remove oss4-dev
- - sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib build-essential chrpath socat cpio python python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping
- 
-
+language: ruby
+sudo: false
+addons:
+  apt:
+    packages:
+    - gawk
+    - wget
+    - git-core
+    - diffstat
+    - unzip
+    - texinfo
+    - gcc-multilib
+    - build-essential
+    - chrpath
+    - socat
+    - libsdl1.2-dev
+    - xterm
+cache:
+  directories:
+    - ${TRAVIS_BUILD_DIR}/build/downloads
+    - ${TRAVIS_BUILD_DIR}/build/sstate-cache
 script:
  - . ./init-build-env
  - bitbake qt5-smart-image
